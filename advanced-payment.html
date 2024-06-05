@@ -72,23 +72,7 @@
             background-color: #218838;
         }
     </style>
-    <script>
-        function generateTransactionReference() {
-            const timestamp = new Date().getTime();
-            return 'txn_' + timestamp;
-        }
-
-        function setDynamicValues() {
-            document.getElementById('transaction_reference').value = generateTransactionReference();
-            document.getElementById('customer_name').value = document.getElementById('input_customer_name').value;
-            document.getElementById('email_address').value = document.getElementById('input_email_address').value;
-            document.getElementById('cell_number').value = document.getElementById('input_cell_number').value;
-        }
-
-        window.onload = function() {
-            document.getElementById('payment_form').addEventListener('submit', setDynamicValues);
-        }
-    </script>
+   
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
@@ -143,27 +127,18 @@
                         <div class="containerpay">
                             <h1>Student Payment Form</h1>
                             <form id="payment_form" action="https://pay.ozow.com/" method="POST">
-                                <input type="hidden" name="site_code" value="YUN-YUN-001">
-                                <input type="hidden" name="country_code" value="ZAF">
-                                <input type="hidden" name="currency_code" value="ZAR">
-                                <input type="hidden" name="amount" value="1065.00">
-                                <input type="hidden" id="transaction_reference" name="transaction_reference">
-                                <input type="hidden" id="customer_name" name="customer">
-                                <input type="hidden" id="email_address" name="email_address">
-                                <input type="hidden" id="cell_number" name="cell_number">
-                                <input type="hidden" name="bank_reference" value="yungfxacademyonline">
-                                <input type="hidden" name="success_url" value="https://yungfxacademy.online/success.html">
-                                <input type="hidden" name="error_url" value="https://yungfxacademy.online/error.html">
-                                <input type="hidden" name="notify_url" value="https://yungfxacademy.atwebpages.com/notify.php">
-                                
-                                <label for="input_customer_name">Student Full Name:</label>
-                                <input type="text" id="input_customer_name" name="input_customer_name" required>
-                                
-                                <label for="input_email_address">Email Address:</label>
-                                <input type="email" id="input_email_address" name="input_email_address" required>
-                                
-                                <label for="input_cell_number">Phone Number:</label>
-                                <input type="tel" id="input_cell_number" name="input_cell_number" required>
+                               <input type="hidden" name="SiteCode" value="YUN-YUN-001"> <!-- Replace with your actual Site Code -->
+        <input type="hidden" name="ApiKey" value="9bbb5c72e3c54f479986ff9907b39411"> <!-- Replace with your actual API Key -->
+        <input type="hidden" name="Secret" value="2fb9f0d65ddc464291f04fdf6d1c2632"> <!-- Replace with your actual Secret -->
+        <input type="hidden" name="CountryCode" value="ZAF">
+        <input type="hidden" name="CurrencyCode" value="ZAR">
+        <input type="hidden" name="Amount" value="1065.00">
+        <input type="hidden" name="TransactionReference" value="YFA123">
+        <input type="hidden" name="BankReference" value="YUNGFXACADEMY">
+        <input type="hidden" name="Customer" value="John Doe">
+        <input type="hidden" name="CancelUrl" value="https://yungfxacademy.online/error">
+        <input type="hidden" name="ErrorUrl" value="https://yungfxacademy.online/error">
+        <input type="hidden" name="SuccessUrl" value="https://yungfxacademy.online/success">
                                 
                                 <button class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3" type="submit">Pay with Ozow</button>
                             </form>
